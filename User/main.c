@@ -9,24 +9,45 @@
 #include <stdio.h>
 
 uint8_t keyNum = 0;
-int songIdx = 3;
-int isChanged = 1;
-int isPaused = 0;
+int songIdx = 0;
+int isChanged = 0;
+int isPaused = 1;
 int musicSelect = 0;
 unsigned char* music = NULL;
 
 extern int songSize;
 extern unsigned char* Gmusics[];
 
+void listen_menu() {
+    int isChanged = 0;
+    
+    while (isPaused) {
+     int   keyNum = Key_GetNum();
+        // 1: 上一首 
+        // 2: 下一首
+        // 3: 暂停
+
+
+        switch (keyNum) {
+          case 1:   songIdx = (songIdx + 1) >= songSize ? songIdx : (songIdx + 1); isChanged  = 1;   break ;
+          case 2:   songIdx = (songIdx - 1) < 0 ? songIdx : (songIdx - 1); isChanged = 1; break; 
+          case 3:   isPaused = 1 - isPaused; isChanged = 1; break ;
+          default:  break ; 
+        }
+      if (isChanged) {
+        show_menu();
+        isChanged = 0; 
+      }
+   }
+}
+
 void play_music() {
 
 	int freqSelect = 0;
 	int timeWait = 0;
-	
+	// int isPaused = 1;
     
-    songIdx = 0;
-    isChanged = 0;
-    isPaused = 1;
+    isChanged = 1;
     musicSelect = 0;
     music = Gmusics[songIdx];
     
@@ -102,10 +123,10 @@ int main(void)
     // interrupt_Init();
 
 
-    songIdx = 0;
     
-    show_welcome_page();
-    
+    // show_welcome_page();
+    show_menu();
+    listen_menu();
 	while (1)
 	{
 

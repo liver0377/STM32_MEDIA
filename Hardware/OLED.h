@@ -9,6 +9,8 @@ extern const uint8_t OLED_F16X16[][32];
 extern const uint8_t OLED_IMAGE_bofang[];
 extern const uint8_t OLED_IMAGE_bofang[];
 extern const uint8_t* OLED_IMAGES [];
+extern const uint8_t* OLED_ICONS [];
+
 
 void OLED_Init(void);
 void OLED_Clear(void);
@@ -20,4 +22,5 @@ void OLED_ShowHexNum(uint8_t Line, uint8_t Column, uint32_t Number, uint8_t Leng
 void OLED_ShowBinNum(uint8_t Line, uint8_t Column, uint32_t Number, uint8_t Length);
 void OLED_ShowChinese(uint8_t Line, uint8_t Column, uint8_t idx);
 void OLED_ShowImage(uint8_t Line, uint8_t Column, uint8_t idx);
+void OLED_ShowIcon(uint8_t Line, uint8_t Column, uint8_t idx);
 #endif

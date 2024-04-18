@@ -6,11 +6,13 @@
 #include "songs.h"
 #include <string.h>
 
+
 extern int songIdx;
 extern int isPaused;
 extern char* songToName[];
 
 void show_play_page(void);
 void show_welcome_page(void);
+void show_menu(void);
 
 #endif

@@ -50,7 +50,7 @@ void set_frequency(int frequency){
 void beep(int frequency, int timeWait) {
     set_frequency(frequency);
 	Delay_ms(timeWait);
-	set_frequency(20);
+	set_frequency(0);
 }
 
 

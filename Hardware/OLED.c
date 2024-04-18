@@ -289,6 +289,18 @@ void OLED_ShowImage(uint8_t Line, uint8_t Column, uint8_t idx) {
     }
 }
 
+void OLED_ShowIcon(uint8_t Line, uint8_t Column, uint8_t idx) {
+    uint8_t i;
+    OLED_SetCursor(Line - 1, (Column - 1) * 8);
+    for (int i = 0; i < 8; i ++) {
+        OLED_WriteData(OLED_ICONS[idx][i]);
+    }
+    OLED_SetCursor(Line -1 + 1, (Column - 1) * 8);
+    for (int i = 0; i < 8; i ++) {
+        OLED_WriteData(OLED_ICONS[idx][i + 8]);
+    }
+}
+
 /**
   * @brief  OLED初始化
   * @param  无
